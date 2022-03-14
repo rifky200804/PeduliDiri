@@ -9,15 +9,18 @@ use Illuminate\Support\Facades\Auth;
 class PerjalananController extends Controller
 {
     public function getData(){
-        if(Auth::user()->role == 'admin'){
-            $data = Perjalanan::all();
-            $users = User::all();
-        }else{
-            $id = Auth::user()->id;
-            $data = Perjalanan::where('id_user',$id)->get();
-            $users = User::all();
-        }
-        return view('perjalanan.index', compact('data','users'));
+        // 'admin' atau 'user'
+        // if(Auth::user()->role == 'admin'){
+        //     $data = Perjalanan::all();
+        //     $users = User::all();
+        // }else{
+        //     $id = Auth::user()->id;
+        //     $data = Perjalanan::where('id_user',$id)->get();
+        //     $users = User::all();
+        // }
+        $id = Auth::user()->id;
+        $data = Perjalanan::where('id_user',$id)->get();
+        return view('perjalanan.index', compact('data'));
     }
 
     public function create(){

@@ -21,7 +21,7 @@
                                       <th>Jam</th>
                                       <th>Lokasi</th>
                                       <th>Suhu Tubuh</th>
-                                      <th>User</th>
+                                     
                                       <th>
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleAdd">
                                             Tambah Data
@@ -38,7 +38,7 @@
                                     <td>{{$value->jam}}</td>
                                     <td>{{$value->lokasi}}</td>
                                     <td>{{$value->suhu_tubuh}}</td>
-                                    <td>{{$value->user->nama}}</td>
+                                    
                                     <td>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleDelete">
                                             Delete

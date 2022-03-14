@@ -35,22 +35,7 @@
                                 aria-describedby="suhu_tubuhHelp" placeholder="Enter Suhu Tubuh / Celcius" name="suhu_tubuh">
                         </div>
                         
-                        @if(Auth::user()->role == 'admin')
-                        <div class="form-group">
-                            <label class="form-label">User</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text" for="inputGroupSelect01">User</label>
-                                </div>
-                                <select class="custom-select" name="id_user" id="inputGroupSelect01">
-                                  <option disabled selected>Pilih...</option>
-                                  @foreach($users as $user)
-                                  <option value="{{$user->id}}">{{$user->nama}}</option>
-                                  @endforeach
-                                </select>
-                              </div>
-                        </div>
-                        @endif
+                        
 
                     </div>
                     <div class="modal-footer">

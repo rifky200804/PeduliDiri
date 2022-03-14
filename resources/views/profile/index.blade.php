@@ -30,7 +30,7 @@
                                   </tr>
                               </thead>
                             
-                              @foreach($data as $value)
+                               @foreach($data as $value)
                               <tbody>
                                   <tr>
                                     <td>{{$loop->iteration}}</td>
@@ -39,9 +39,11 @@
                                     <td>{{$value->nik}}</td>
                                     <td>{{$value->role}}</td>
                                     <td>
+                                        @if($value->role != 'admin')
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleDelete">
                                             Delete
                                         </button>
+                                        @endif
                                         @include('profile.modal.delete')
                                     </td>
                                   </tr>

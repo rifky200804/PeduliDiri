@@ -65,6 +65,10 @@
                                     <input type="text" name="nama" class="form-control" placeholder="Enter Nama">
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label">Username</label>
                                     <input type="text" name="username"  class="form-control" placeholder="Enter Username">
                                 </div>

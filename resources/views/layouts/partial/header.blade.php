@@ -13,7 +13,7 @@
                             style="background-image: url({{asset('foto/default.png')}})"@endif></span>
                         <span class="ml-2 d-none d-lg-block">
                             <span class="text-default">{{Auth::user()->nama}}</span>
-                            <small class="text-muted d-block mt-1">{{Auth::user()->role}}</small>
+                            <small class="text-muted d-block mt-1">{{Auth::user()->nik}}</small>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -52,11 +52,11 @@
                     <li class="nav-item dropdown">
                         <a href="{{route('dashboard')}}" class="nav-link {{ Request::url() == route('dashboard') ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                     </li>
-                    @if(Auth::user()->role == 'admin')
+                    {{-- @if(Auth::user()->role == 'admin')
                     <li class="nav-item dropdown">
                         <a href="{{route('user.data')}}" class="nav-link {{ Request::url() == route('user.data') ? 'active' : '' }}"><i class="fe fe-user"></i>User</a>
                     </li>
-                    @endif
+                    @endif --}}
                     <li class="nav-item dropdown">
                         <a href="{{route('perjalanan.data')}}" class="nav-link {{ Request::url() == route('perjalanan.data') ? 'active' : '' }}"><i class="fa fa-blind"></i> Data Perjalanan</a>
                     </li>

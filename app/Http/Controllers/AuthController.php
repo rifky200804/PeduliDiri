@@ -20,8 +20,8 @@ class AuthController extends Controller
         $password = $request->password;
         $store = [
             'nik'=> $request->nik,
-            'role'=> $request->role,
             'nama'=> $request->nama,
+            'email' => $request->email,
             'telp'=> $request->telp,
             'email'=> $request->email,
             'username'=> $request->username,

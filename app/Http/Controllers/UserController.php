@@ -31,8 +31,9 @@ class UserController extends Controller
         $password = $request->password;
         $data = [
             'nik'=> $request->nik,
-            'role'=> $request->role,
+            
             'nama'=> $request->nama,
+            'email' => $request->email,
             'username'=> $request->username,
             'password'=> Hash::make($password),
             'confirm_password'=> $request->confirm_password,
@@ -45,6 +46,12 @@ class UserController extends Controller
         User::create($data);
         
         return redirect()->route('user.data');
+    }
+
+    public function show($id){
+
+        $data = User::find($id);
+        return view('profile.show',compact('data'));
     }
 
     public function edit($id)
@@ -71,13 +78,14 @@ class UserController extends Controller
         // die;
         
         $where = User::find($id);
+        // dd($request->alamat);
 
         $data = [
             'nik'=> $request->nik,
             'nama'=> $request->nama,
             'telp'=> $request->telp,
             'email'=> $request->email,
-            'id_kota' => $request->id_kota,
+            'alamat' => $request->alamat,
         ];
 
         

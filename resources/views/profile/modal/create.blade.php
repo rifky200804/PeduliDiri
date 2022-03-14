@@ -11,7 +11,7 @@
                 
             </div>
             <form action="{{route('user.store')}}" method="post">
-                @csrf
+                @csrf 
                 <div class="modal-body">
                     
                     <div class="form-group">
@@ -38,6 +38,12 @@
                         <label class="form-label">Nama</label>
                         <input type="text" class="form-control" id="exampleInputnama"
                             aria-describedby="namaHelp" placeholder="Enter nama" name="nama">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputnama"
+                            aria-describedby="emailHelp" placeholder="Enter email" name="email">
                     </div>
 
                     <div class="form-group">

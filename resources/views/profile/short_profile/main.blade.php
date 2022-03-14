@@ -45,20 +45,20 @@
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="col-md-4">Kota</label> 
-                        <label class="col-md-7">: {{ Auth::user()->kota->kota ?? ''}}</label>
+                        <label class="col-md-4">Alamat</label> 
+                        <label class="col-md-7">: {{ Auth::user()->alamat ?? ''}}</label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-footer">
-                        <a href="{{ route('user.edit', Auth::user()->id) }}"
-                            class="btn btn-primary btn-block">Edit</a>
+                    <div class="form-footer ">
+                        <a href="{{ route('user.show', Auth::user()->id) }}"
+                            class="btn btn-primary btn-block">Profile</a>
                     </div>
                 </div>
             </div>

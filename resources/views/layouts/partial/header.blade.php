@@ -52,11 +52,11 @@
                     <li class="nav-item dropdown">
                         <a href="{{route('dashboard')}}" class="nav-link {{ Request::url() == route('dashboard') ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                     </li>
-                    {{-- @if(Auth::user()->role == 'admin')
+                    @if(Auth::user()->role == 'admin')
                     <li class="nav-item dropdown">
                         <a href="{{route('user.data')}}" class="nav-link {{ Request::url() == route('user.data') ? 'active' : '' }}"><i class="fe fe-user"></i>User</a>
                     </li>
-                    @endif --}}
+                    @endif
                     <li class="nav-item dropdown">
                         <a href="{{route('perjalanan.data')}}" class="nav-link {{ Request::url() == route('perjalanan.data') ? 'active' : '' }}"><i class="fa fa-blind"></i> Data Perjalanan</a>
                     </li>

@@ -7,6 +7,7 @@ use App\User;
 use App\Kota;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use PDF;
 
 class UserController extends Controller
 {
@@ -31,7 +32,7 @@ class UserController extends Controller
         $password = $request->password;
         $data = [
             'nik'=> $request->nik,
-            
+            'role'=> $request->role,
             'nama'=> $request->nama,
             'email' => $request->email,
             'username'=> $request->username,
@@ -111,5 +112,20 @@ class UserController extends Controller
         $where->delete();
 
         return redirect()->route('user.data');
+    }
+
+    public function cetak_pdf()
+    {
+    	// $user = User::where('role','user')->get();
+        $user = User::all();
+    	$pdf = PDF::loadview('user_pdf',['user'=>$user]);
+    	// return $pdf->download('laporan-user.pdf');
+        return $pdf->stream();
+    }
+
+    public function detail($id)
+    {
+        $data = User::find($id);
+        return view('profile.detail',compact('data'));
     }
 }

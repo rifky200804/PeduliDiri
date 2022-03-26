@@ -63,7 +63,7 @@
                         <input type="password" class="form-control" id="exampleInputconfirm_password"
                             aria-describedby="confirm_passwordHelp" placeholder="Enter confirm_password" name="confirm_password">
                     </div>
-
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -153,7 +153,7 @@
                         opt.value = data.id;
                         opt.innerHTML = data.name;
                         selectProvinsi.appendChild(opt);
-                        // console.log(selectProvinsi)
+                        console.log(selectProvinsi)
                     })
                 }else{
                     let opt = document.createElement('option');

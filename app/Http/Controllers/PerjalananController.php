@@ -10,16 +10,14 @@ class PerjalananController extends Controller
 {
     public function getData(){
         // 'admin' atau 'user'
-        // if(Auth::user()->role == 'admin'){
-        //     $data = Perjalanan::all();
-        //     $users = User::all();
-        // }else{
-        //     $id = Auth::user()->id;
-        //     $data = Perjalanan::where('id_user',$id)->get();
-        //     $users = User::all();
-        // }
-        $id = Auth::user()->id;
-        $data = Perjalanan::where('id_user',$id)->get();
+        if(Auth::user()->role == 'admin'){
+            $data = Perjalanan::paginate(3);
+        }else{
+            $id = Auth::user()->id;
+            $data = Perjalanan::where('id_user',$id)->paginate(3);
+        }
+        // $id = Auth::user()->id;
+        // $data = Perjalanan::where('id_user',$id)->get();
         return view('perjalanan.index', compact('data'));
     }
 

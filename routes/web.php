@@ -29,10 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/create', 'UserController@create')->name('user.create');
     Route::post('/user/store', 'UserController@store')->name('user.store');
     Route::get('/user/show/{id}','UserController@show')->name('user.show');
+    Route::get('/user/detail/{id}', 'UserController@detail')->name('user.detail');
     Route::get('/user/edit/{id}','UserController@edit')->name('user.edit');
-
     Route::put('/user/update/{id}','UserController@update')->name('user.update');
     Route::get('/user/delete/{id}','UserController@delete')->name('user.delete');
+    Route::get('/user/cetak_pdf','UserController@cetak_pdf')->name('user.cetak_pdf');
 
 
     Route::get('/perjalanan/data', 'PerjalananController@getData')->name('perjalanan.data');

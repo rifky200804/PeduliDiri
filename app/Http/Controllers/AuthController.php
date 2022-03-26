@@ -16,17 +16,21 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6'
+        ]);
         // dd($request->all());    
         $password = $request->password;
         $store = [
             'nik'=> $request->nik,
+            'role' => 'user',
             'nama'=> $request->nama,
             'email' => $request->email,
             'telp'=> $request->telp,
             'email'=> $request->email,
             'username'=> $request->username,
             'password'=> Hash::make($password),
-            'confirm_password'=> $request->confirm_password,
+            'confirm_password'=> $request->password_confirmation,
             'remember_token'=> Str::random(32)
         ];
 

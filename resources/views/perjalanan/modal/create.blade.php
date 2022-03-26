@@ -31,9 +31,17 @@
 
                         <div class="form-group">
                             <label class="form-label">Suhu Tubuh</label>
-                            <input type="number" class="form-control" id="exampleInputsuhu_tubuh"
+                            <input type="text" class="form-control" id="exampleInputsuhu_tubuh"
                                 aria-describedby="suhu_tubuhHelp" placeholder="Enter Suhu Tubuh / Celcius" name="suhu_tubuh">
                         </div>
+
+                        @if (Auth::user()->role == 'admin')
+                        <div class="form-group">
+                            <label class="form-label">NIK USER</label>
+                            <input type="number" class="form-control" id="exampleInputnik_user"
+                                aria-describedby="nik_userHelp" placeholder="Enter NIK User" name="nik_user">
+                        </div>
+                        @endif
                         
                         
 

@@ -58,27 +58,33 @@
                                 <div class="card-title">Create new account</div>
                                 <div class="form-group">
                                     <label class="form-label">NIK</label>
-                                    <input type="number" name="nik" class="form-control" placeholder="Enter NIK">
+                                    <input type="number" name="nik" class="form-control" placeholder="Enter NIK" value="{{ old('nik') }}"> 
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Nama</label>
-                                    <input type="text" name="nama" class="form-control" placeholder="Enter Nama">
+                                    <input type="text" name="nama" class="form-control" placeholder="Enter Nama" value="{{ old('nama') }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Enter email">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter email" value="{{ old('email') }}" >
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Username</label>
-                                    <input type="text" name="username"  class="form-control" placeholder="Enter Username">
+                                    <input type="text" name="username"  class="form-control" placeholder="Enter Username" value="{{ old('username') }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                                    
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Confirm Password</label>
-                                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                                 </div>
                                 
                                 <div class="form-footer">
@@ -87,7 +93,7 @@
                             </div>
                         </form>
                         <div class="text-center text-muted">
-                            Already have account? <a href="login.html">Sign in</a>
+                            Already have account? <a href="{{route('login')}}">Sign in</a>
                         </div>
                     </div>
                 </div>

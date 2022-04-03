@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Kota;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use PDF;
 
 class UserController extends Controller
 {
-
+    
     public function index(){
-        $data = User::all();
+        
+        // $this->middleware('admin');
+        
+    
+        $data = User::paginate(3);
         return view('profile.index',compact('data'));
     }
 
@@ -26,7 +29,13 @@ class UserController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'role'=>'required'
+            'nik'=>'required|unique:users|max:16|min:16',
+            'username'=>'required|unique:users',
+            'nama'=>'required',
+            'email'=>'required|unique:users',
+            'role'=>'required',
+            'password' => 'required|confirmed|min:6'
+            
         ]); 
 
         $password = $request->password;
@@ -58,9 +67,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-        $kota = Kota::all();
         // dd($data->nik);
-        return view('profile.edit',compact('data','kota'));
+        return view('profile.edit',compact('data'));
     }
 
     public function update(Request $request, $id)
@@ -102,7 +110,7 @@ class UserController extends Controller
 
         $where->update($data);
         
-        return redirect()->route('user.edit',$id);
+        return redirect()->route('user.show',$id);
     }
 
     public function delete($id)

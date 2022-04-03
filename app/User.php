@@ -40,12 +40,12 @@ class User extends Authenticatable
     public function perjalanan(){
         
         return $this->hasMany(Perjalanan::class, 'id', 'id_user');
-       
+
     }
 
     public function kota(){
         
         return $this->belongsTo(Kota::class, 'id_kota', 'id_kota');
-       
+
     }
 }

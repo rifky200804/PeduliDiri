@@ -54,6 +54,12 @@
                                     </tbody>
                                 @endforeach
                             </table>
+                            Halaman
+                            {{$data->currentPage()}}
+                            Dari
+                            {{$data->lastPage()}}
+
+                            {{$data->links()}}
                         </div>
                     </div>
                 </div>

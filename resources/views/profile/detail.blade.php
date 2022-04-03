@@ -65,6 +65,11 @@
                                 <label>: {{$data->alamat}}</label>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{route('user.data')}}" class="btn btn-secondary">Kembali</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

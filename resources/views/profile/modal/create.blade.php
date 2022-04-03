@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="exampleInputconfirm_password"
-                            aria-describedby="confirm_passwordHelp" placeholder="Enter confirm_password" name="confirm_password">
+                            aria-describedby="confirm_passwordHelp" placeholder="Enter confirm_password" name="password_confirmation">
                     </div>
                     
                 </div>

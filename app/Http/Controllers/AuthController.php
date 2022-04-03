@@ -11,12 +11,20 @@ class AuthController extends Controller
 {
     public function register()
     {
+        if(isset(Auth::user()->id)){
+            return redirect()->route('dashboard');
+        }
+
         return view('auth.register');
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
+            'nik'=>'required',
+            'username'=>'required',
+            'nama'=>'required',
+            'email'=>'required',
             'password' => 'required|confirmed|min:6'
         ]);
         // dd($request->all());    
@@ -42,6 +50,9 @@ class AuthController extends Controller
 
     public function login()
     {
+        if(isset(Auth::user()->id)){
+            return redirect()->route('dashboard');
+        }
         return view('auth.login');
     }
 
@@ -63,7 +74,8 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('message','Berhasil Logout');
+        // Session::flush();
+        return redirect()->route('welcome')->with('message','Berhasil Logout');
     }
 
 }

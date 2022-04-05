@@ -27,8 +27,34 @@ class PerjalananController extends Controller
 
     public function saveData(Request $request){
         // dd(Auth::user()->id);
-        if(isset($request->id_user) > 0){
-            $user = $request->id_user;
+        if (Auth::user()->role == 'admin') {
+            $request->validate([
+                'tanggal' => 'required',
+                'jam' => 'required',
+                'lokasi' => 'required',
+                'suhu_tubuh' => 'required',
+                'nik_user' => 'required'
+            ]);
+        }else{
+            $request->validate([
+                'tanggal'=>'required',
+                'jam'=>'required',
+                'lokasi'=>'required',
+                'suhu_tubuh'=>'required'
+            ]);
+        }
+
+        if(isset($request->nik_user) > 0){
+            $nik = $request->nik_user;
+            $id = User::where('nik',$nik)->first();
+            // dd($id->id);
+            if($id != NULL){
+                $user = $id->id;
+            }else {
+                return back()->with('message','Anda Gagal Menambahkan Data');
+            }
+            // dd($user);
+            
         }else{
             $user = Auth::user()->id;
         }

@@ -11,10 +11,10 @@ class PerjalananController extends Controller
     public function getData(){
         // 'admin' atau 'user'
         if(Auth::user()->role == 'admin'){
-            $data = Perjalanan::paginate(3);
+            $data = Perjalanan::orderBy('id_perjalanan','desc')->paginate(3);
         }else{
             $id = Auth::user()->id;
-            $data = Perjalanan::where('id_user',$id)->paginate(3);
+            $data = Perjalanan::where('id_user',$id)->orderBy('id_perjalanan','desc')->paginate(3);
         }
         // $id = Auth::user()->id;
         // $data = Perjalanan::where('id_user',$id)->get();
@@ -67,7 +67,7 @@ class PerjalananController extends Controller
             'id_user'=> $user
         ];
         Perjalanan::create($data);
-        return redirect()->route('perjalanan.data')->with('message','Success Menambahkan Data');
+        return redirect()->route('perjalanan.data')->with('success','Success Menambahkan Data');
     }
     public function delete($id){
         $where = Perjalanan::find($id);

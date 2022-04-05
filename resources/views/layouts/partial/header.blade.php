@@ -18,7 +18,7 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="{{route('user.edit',Auth::user()->id)}}">
+                        <a class="dropdown-item" href="{{route('user.show',Auth::user()->id)}}">
                             <i class="dropdown-icon fe fe-user"></i> Profile
                         </a>
                         
@@ -66,9 +66,14 @@
                         <li class="nav-item dropdown">
                             <a href="{{route('dashboard')}}" class="nav-link {{ Request::url() == route('dashboard') ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                         </li>
+                        {{-- <li class="nav-item dropdown">
+                            <a class="nav-link {{ Request::url() == route('user.show',Auth::user()->id) ? 'active' : '' }}" href="{{route('user.show',Auth::user()->id)}}">
+                                <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+                        </li> --}}
                         @if(Auth::user()->role == 'admin')
                         <li class="nav-item dropdown">
-                            <a href="{{route('user.data')}}" class="nav-link {{ Request::url() == route('user.data') ? 'active' : '' }}"><i class="fe fe-user"></i>User</a>
+                            <a href="{{route('user.data')}}" class="nav-link {{ Request::url() == route('user.data') ? 'active' : '' }}"><i class="fa fa-users"></i>User</a>
                         </li>
                         @endif
                         <li class="nav-item dropdown">

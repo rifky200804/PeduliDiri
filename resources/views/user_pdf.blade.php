@@ -13,15 +13,10 @@
 			font-size: 9pt;
 		}
 	</style>
-	<center>
-        <div class="row">
-            <div class="col-md-12">
-                {{-- <img src="{{asset('icon/pedulidiri.png')}}" style="width:20px; height:20px"> --}}
-                <h5>Laporan Data User PEDULI DIRI</h5>
-            </div>
-        </div>
+	<center>       
+        <h5>Laporan Data User PEDULI DIRI</h5>
 	</center>
-
+	<hr>
 	<table class='table table-bordered'>
 		<thead>
 			<tr>

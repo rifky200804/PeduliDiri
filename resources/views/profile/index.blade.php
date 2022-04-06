@@ -48,9 +48,7 @@
                                     <td>
                                         <a href="{{route('user.detail',$value->id)}}" class="btn btn-warning">Detail</a>
                                         @if ($value->role != 'admin')
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleDelete">
-                                            Delete
-                                        </button>
+                                        <a href="{{route('user.delete',$value->id)}}" class="btn btn-danger" onclick="return confirm('apakah anda yakin akan menghapus data ini?')">Hapus</a>
                                         @endif
                                         @include('profile.modal.delete')
                                     </td>

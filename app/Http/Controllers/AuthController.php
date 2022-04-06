@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class AuthController extends Controller
 {
     public function register()
@@ -14,7 +16,6 @@ class AuthController extends Controller
         if(isset(Auth::user()->id)){
             return redirect()->route('dashboard');
         }
-
         return view('auth.register');
     }
 
@@ -43,7 +44,7 @@ class AuthController extends Controller
         ];
 
         User::create($store);
-        
+        Alert::toast('Berhasil Daftar', 'success');
         return redirect()->route('login');
         
     }
@@ -51,6 +52,7 @@ class AuthController extends Controller
     public function login()
     {
         if(isset(Auth::user()->id)){
+            Alert::toast('Anda Sudah Login', 'warning');
             return redirect()->route('dashboard');
         }
         return view('auth.login');
@@ -62,11 +64,12 @@ class AuthController extends Controller
         
         if(Auth::guard()->attempt($request->only('username','password'))){
             // echo true;
-            
+            Alert::toast('Berhasil Login', 'success');
             return redirect()->route('dashboard');
             // dd(Auth::user());
         }else{
             // echo "err0r";
+            Alert::toast('Gagal Login', 'error');
             return redirect()->route('login')->with('message','Username Atau Password Salah!');
         }
     }
@@ -75,6 +78,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         // Session::flush();
+        Alert::toast('Berhasil Logout', 'success');
         return redirect()->route('welcome')->with('message','Berhasil Logout');
     }
 

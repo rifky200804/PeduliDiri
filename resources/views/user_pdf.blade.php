@@ -21,7 +21,6 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Role</th>
 				<th>NIK</th>
 				<th>Nama</th>
 				<th>No.Telp</th>
@@ -34,7 +33,6 @@
 			@foreach($user as $p)
 			<tr>
 				<td>{{ $i++ }}</td>
-				<td>{{ $p->role }}</td>
 				<td>{{ $p->nik }}</td>
 				<td>{{$p->nama ?? '-'}}</td>
 				<td>{{$p->telp ?? '-'}}</td>

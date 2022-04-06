@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Perjalanan;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 class PerjalananController extends Controller
 {
     public function getData(){
@@ -51,6 +52,7 @@ class PerjalananController extends Controller
             if($id != NULL){
                 $user = $id->id;
             }else {
+                Alert::toast('Gagal Menambahkan data', 'error');
                 return back()->with('message','Anda Gagal Menambahkan Data');
             }
             // dd($user);
@@ -67,12 +69,14 @@ class PerjalananController extends Controller
             'id_user'=> $user
         ];
         Perjalanan::create($data);
+        Alert::toast('Success Menambahkan Data', 'success');
         return redirect()->route('perjalanan.data')->with('success','Success Menambahkan Data');
     }
     public function delete($id){
         $where = Perjalanan::find($id);
         $where->delete();
-        return redirect()->route('perjalanan.data')->with('message','Success menghapus Data');
+        Alert::toast('Success Menghapus Data', 'success');
+        return redirect()->route('perjalanan.data');
     }
     
 }

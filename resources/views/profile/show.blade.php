@@ -35,7 +35,7 @@
 
                         <div class="row mt-4">
                             <div class="col-md-12 d-flex justify-content-end">
-                                <a href="{{route('perjalanan.data')}}" class="btn btn-md btn-secondary mr-5" style="width: 100px;">Kembali</a>
+                                <a href="{{route('dashboard')}}" class="btn btn-md btn-secondary mr-5" >Kembali Ke Halaman Dashboard</a>
                                 <a href="{{route('user.edit',$data->id)}}" class="btn btn-md btn-primary" style="width: 100px;">Edit</a>
                             </div>
                         </div>

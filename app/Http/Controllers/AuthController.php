@@ -22,10 +22,11 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nik'=>'required',
-            'username'=>'required',
+            'nik'=>'required|unique:users|max:16|min:16',
+            'username'=>'required|unique:users',
             'nama'=>'required',
-            'email'=>'required',
+            'email'=>'required|unique:users',
+            'role'=>'required',
             'password' => 'required|confirmed|min:6'
         ]);
         // dd($request->all());    

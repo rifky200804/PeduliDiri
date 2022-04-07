@@ -75,7 +75,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         
-       
         // dd($request->id_kota);
         // die;
         if($request->foto > 0)

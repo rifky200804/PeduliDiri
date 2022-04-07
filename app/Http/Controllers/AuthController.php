@@ -26,7 +26,6 @@ class AuthController extends Controller
             'username'=>'required|unique:users',
             'nama'=>'required',
             'email'=>'required|unique:users',
-            'role'=>'required',
             'password' => 'required|confirmed|min:6'
         ]);
         // dd($request->all());    

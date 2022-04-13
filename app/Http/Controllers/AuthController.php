@@ -14,6 +14,7 @@ class AuthController extends Controller
     public function register()
     {
         if(isset(Auth::user()->id)){
+            Alert::toast('Anda Sudah Login', 'warning');
             return redirect()->route('dashboard');
         }
         return view('auth.register');

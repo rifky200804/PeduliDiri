@@ -9,17 +9,36 @@ use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 class PerjalananController extends Controller
 {
-    public function getData(){
+    public function getData(Request $request){
         // 'admin' atau 'user'
+        $urut = "";
         if(Auth::user()->role == 'admin'){
-            $data = Perjalanan::orderBy('id_perjalanan','desc')->paginate(3);
+
+            
+            if(isset($request->urutan)){
+                $urut = $request->urutan;
+                $data = Perjalanan::where('tanggal','<=',"$urut")->orderBy('id_perjalanan','desc')->get();
+                return view('perjalanan.index', compact('data','urut'));
+            }else{
+                $data = Perjalanan::orderBy('id_perjalanan','desc')->paginate(3);
+                return view('perjalanan.index', compact('data'));
+            }
         }else{
+
             $id = Auth::user()->id;
-            $data = Perjalanan::where('id_user',$id)->orderBy('id_perjalanan','desc')->paginate(3);
+            if(isset($request->urutan)){
+                $urut = $request->urutan;
+                $data = Perjalanan::where('id_user',$id)->where('tanggal', '<=' ,$urut)->orderBy('id_perjalanan','desc')->get();
+                return view('perjalanan.index', compact('data','urut'));
+            }else{
+                $data = Perjalanan::where('id_user',$id)->orderBy('id_perjalanan','desc')->paginate(3);
+                return view('perjalanan.index', compact('data'));
+            }
+            
         }
         // $id = Auth::user()->id;
         // $data = Perjalanan::where('id_user',$id)->get();
-        return view('perjalanan.index', compact('data'));
+        // return view('perjalanan.index', compact('data'));
     }
 
     public function create(){

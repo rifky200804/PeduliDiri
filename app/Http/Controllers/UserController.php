@@ -126,7 +126,7 @@ class UserController extends Controller
     public function cetak_pdf()
     {
     	// $user = User::where('role','user')->get();
-        $user = User::all();
+        $user = User::where('role','user')->get();
     	$pdf = PDF::loadview('user_pdf',['user'=>$user]);
     	// return $pdf->download('laporan-user.pdf');
         return $pdf->stream();

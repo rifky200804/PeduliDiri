@@ -27,19 +27,20 @@ Route::group(['middleware' => ['auth','role:admin','revalidate']], function () {
     Route::get('/user/delete/{id}','UserController@delete')->name('user.delete');
     Route::get('/user/cetak_pdf','UserController@cetak_pdf')->name('user.cetak_pdf');
 
+    
 });
 
 Route::group(['middleware'=>['auth','revalidate']],function(){
-
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
+    
     Route::get('/perjalanan/data', 'PerjalananController@getData')->name('perjalanan.data');
     Route::get('/perjalanan/create', 'PerjalananController@create')->name('perjalanan.create');
     Route::post('/perjalanan/save', 'PerjalananController@saveData')->name('perjalanan.save');
     Route::get('/perjalanan/delete/{id}','PerjalananController@delete')->name('perjalanan.delete');
-
+    
     Route::get('/user/edit/{id}','UserController@edit')->name('user.edit');
     Route::put('/user/update/{id}','UserController@update')->name('user.update');
     Route::get('/user/show/{id}','UserController@show')->name('user.show');
@@ -52,6 +53,8 @@ Route::get('/',function(){
     }
     return view('index');
 })->name('welcome');
+
+Route::get('/perjalanan/cetak_pdf','PerjalananController@cetak_pdf')->name('perjalanan.cetak_pdf');
 
 Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/store', 'AuthController@store')->name('store');

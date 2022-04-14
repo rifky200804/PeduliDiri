@@ -12,13 +12,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 class UserController extends Controller
 {
     
-    public function index(){
+    public function index(Request $request){
         
-        // $this->middleware('admin');
+        if (isset($request->search)) {
+            $search = $request->search;
+            $data = User::where('nik',$search)->orWhere('username',$search)->orWhere('nama',$search)->orWhere('role',$search)->get();
+            return view('profile.index',compact('data','search'));
+        }else {
+            $data = User::paginate(3);
+            return view('profile.index',compact('data'));
+        }
         
     
-        $data = User::paginate(3);
-        return view('profile.index',compact('data'));
     }
 
     public function create()
@@ -127,7 +132,7 @@ class UserController extends Controller
     {
     	// $user = User::where('role','user')->get();
         $user = User::where('role','user')->get();
-    	$pdf = PDF::loadview('user_pdf',['user'=>$user]);
+    	$pdf = PDF::loadview('print.user_pdf',['user'=>$user]);
     	// return $pdf->download('laporan-user.pdf');
         return $pdf->stream();
     }

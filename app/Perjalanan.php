@@ -11,7 +11,8 @@ class Perjalanan extends Model
     protected $fillable = [
         'tanggal',
         'jam',
-        'lokasi',
+        'lokasi_awal',
+        'lokasi_tujuan',
         'suhu_tubuh',
         'id_user',
         'created_at',
@@ -19,7 +20,6 @@ class Perjalanan extends Model
     ];
 
     protected $primaryKey = 'id_perjalanan';
-       
         public function user()
         {
             return $this->belongsTo(User::class, 'id_user', 'id');

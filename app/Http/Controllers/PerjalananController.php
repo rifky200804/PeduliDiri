@@ -7,6 +7,7 @@ use App\Perjalanan;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 class PerjalananController extends Controller
 {
     public function getData(Request $request){
@@ -47,43 +48,23 @@ class PerjalananController extends Controller
 
     public function saveData(Request $request){
         // dd(Auth::user()->id);
-        if (Auth::user()->role == 'admin') {
-            $request->validate([
-                'tanggal' => 'required',
-                'jam' => 'required',
-                'lokasi' => 'required',
-                'suhu_tubuh' => 'required',
-                'nik_user' => 'required'
-            ]);
-        }else{
             $request->validate([
                 'tanggal'=>'required',
                 'jam'=>'required',
-                'lokasi'=>'required',
+                'lokasi_awal' => 'required',
+                'lokasi_tujuan' => 'required',
                 'suhu_tubuh'=>'required'
             ]);
-        }
+        
 
-        if(isset($request->nik_user) > 0){
-            $nik = $request->nik_user;
-            $id = User::where('nik',$nik)->first();
-            // dd($id->id);
-            if($id != NULL){
-                $user = $id->id;
-            }else {
-                Alert::toast('Gagal Menambahkan data', 'error');
-                return back()->with('message','Anda Gagal Menambahkan Data');
-            }
-            // dd($user);
-            
-        }else{
             $user = Auth::user()->id;
-        }
+
 
         $data = [
             'tanggal'=>$request->tanggal,
             'jam'=>$request->jam,
-            'lokasi'=>$request->lokasi,
+            'lokasi_awal' => $request->lokasi_awal,
+            'lokasi_tujuan' => $request->lokasi_tujuan,
             'suhu_tubuh'=>$request->suhu_tubuh,
             'id_user'=> $user
         ];
@@ -98,4 +79,17 @@ class PerjalananController extends Controller
         return redirect()->route('perjalanan.data');
     }
     
+    public function cetak_pdf()
+    {
+    	// $user = User::where('role','user')->get();
+        if (Auth::user()->role == 'admin') {
+            $perjalanan = Perjalanan::all();
+            $pdf = PDF::loadview('print.perjalanan_pdf',['perjalanan'=>$perjalanan]);
+        }else{
+            $perjalanan = Perjalanan::where('id_user',Auth::user()->id)->get();
+            $pdf = PDF::loadview('print.perjalanan_pdf',['perjalanan'=>$perjalanan]);
+        }
+    	// return $pdf->download('laporan-user.pdf');
+        return $pdf->stream();
+    }
 }

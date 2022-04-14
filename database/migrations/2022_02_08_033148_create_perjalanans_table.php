@@ -17,7 +17,8 @@ class CreatePerjalanansTable extends Migration
             $table->bigIncrements('id_perjalanan');
             $table->date('tanggal');
             $table->string('jam');
-            $table->string('lokasi');
+            $table->string('lokasi_awal');
+            $table->string('lokasi_tujuan');
             $table->string('suhu_tubuh');
             $table->integer('id_user');
             $table->timestamps();

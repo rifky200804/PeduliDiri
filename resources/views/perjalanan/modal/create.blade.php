@@ -21,8 +21,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Lokasi</label>
-                            <input type="text" class="form-control" id="exampleInputlokasi" aria-describedby="lokasiHelp" placeholder="Enter lokasi" name="lokasi" required>
+                            <label class="form-label">Lokasi Awal</label>
+                            <input type="text" class="form-control" id="exampleInputlokasi" aria-describedby="lokasiHelp" placeholder="Enter lokasi" name="lokasi_awal" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Lokasi Tujuan</label>
+                            <input type="text" class="form-control" id="exampleInputlokasi" aria-describedby="lokasiHelp" placeholder="Enter lokasi" name="lokasi_tujuan" required>
                         </div>
 
                         <div class="form-group">
@@ -30,12 +34,12 @@
                             <input type="text" class="form-control" id="exampleInputsuhu_tubuh" aria-describedby="suhu_tubuhHelp" placeholder="Enter Suhu Tubuh / Celcius" name="suhu_tubuh" required>
                         </div>
 
-                        @if (Auth::user()->role == 'admin')
+                        <!-- @if (Auth::user()->role == 'admin')
                         <div class="form-group">
                             <label class="form-label">NIK USER</label>
-                            <input type="number" class="form-control" id="exampleInputnik_user" aria-describedby="nik_userHelp" placeholder="Enter NIK User" name="nik_user">
+                            <input type="number" class="form-control" id="exampleInputnik_user" aria-describedby="nik_userHelp" placeholder="Enter NIK User" name="nik_user" required>
                         </div>
-                        @endif
+                        @endif -->
 
 
 
